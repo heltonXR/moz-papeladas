@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moz Papeladas - Consultoria Burocratica em Mocambique</title>
+    <meta name="description" content="A Moz Papeladas e uma consultoria especializada em solucoes burocraticas e administrativas em Mocambique.">
+    
+    <!-- APENAS INTER - Fonte principal -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy:      #0A1628;   /* azul bem escuro */
+            --navy-mid:  #112240;   /* azul profundo para blocos */
+            --gold:      #B8962E;   /* dourado principal */
+            --gold-lt:   #D4AF5A;   /* dourado claro para botoes */
+            --cream:     #FFFFFF;   /* fundo branco como na referencia */
+            --cream-dk:  #F3F4F6;   /* cinza bem claro para caixas */
+            --text:      #E5E7EB;
+            --text-muted:#9CA3AF;
+            --white:     #FFFFFF;
+            --font:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Inter para tudo */
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            background: #050b16;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--cream-dk); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+        /* ─── UTILITIES ─── */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(5, 11, 22, 0.88);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(184, 150, 46, 0.2);
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header.header-blur {
+            background: rgba(5, 11, 22, 0.96);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 14px 45px rgba(0,0,0,0.6);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 3rem;
+            height: 72px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 0.35rem;
+        }
+
+        .logo-text {
+            font-family: var(--font);
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.02em;
+        }
+
+        .logo-highlight {
+            color: var(--gold-lt);
+            font-weight: 800;
+            /* itálico removido para manter consistência */
+        }
+
+        .nav-menu {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2.4rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-menu a {
+            font-family: var(--font);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold-lt);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active { color: var(--gold-lt); }
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after { width: 100%; }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            font-family: var(--font);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255,255,255,0.5);
+            transition: color 0.3s;
+        }
+
+        .lang-btn.active { color: var(--gold-lt); }
+        .lang-btn:hover { color: var(--white); }
+        .lang-divider { color: rgba(255,255,255,0.25); font-size: 0.7rem; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ─── MOBILE DRAWER ─── */
+        .mobile-drawer {
+            position: fixed;
+            top: 0; right: -100%;
+            width: min(320px, 85vw);
+            height: 100vh;
+            background: var(--navy);
+            border-left: 1px solid rgba(184,150,46,0.2);
+            z-index: 999;
+            transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+            display: flex;
+            flex-direction: column;
+            padding: 6rem 2.5rem 3rem;
+        }
+
+        .mobile-drawer.open { right: 0; }
+
+        .mobile-drawer ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mobile-drawer a {
+            font-family: var(--font);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.3s;
+        }
+
+        .mobile-drawer a:hover { color: var(--gold-lt); }
+
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 998;
+        }
+
+        .drawer-overlay.open { display: block; }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            background: #050b16;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 110px 0 90px;
+        }
+
+        .hero-inner {
+            position: relative;
+            background: transparent;
+            padding: 0 3rem;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 880px;
+            margin: 0 auto;
+            box-shadow: none;
+        }
+
+        .hero-inner::before,
+        .hero-inner::after {
+            content: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            width: 32px; height: 1px;
+            background: var(--gold);
+            opacity: 0.8;
+        }
+
+        .hero-eyebrow span {
+            font-family: var(--font);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-lt);
+        }
+
+        .hero h1 {
+            font-family: var(--font);
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 1.6rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.4s forwards;
+        }
+
+        .hero h1 em {
+            font-style: normal; /* removido itálico */
+            color: var(--gold-lt);
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font);
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: rgba(247,243,236,0.65);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 560px;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.6s forwards;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            font-family: var(--font);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold-lt);
+            padding: 1rem 2.4rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.8s forwards;
+        }
+
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--white);
+            transform: translateX(-101%);
+            transition: transform 0.35s ease;
+        }
+
+        .btn-hero span { position: relative; z-index: 1; }
+        .btn-hero:hover::before { transform: translateX(0); }
+        .btn-hero:hover { color: var(--navy); }
+
+        /* ─── SOBRE ─── */
+        .sobre {
+            background: var(--cream);
+            padding: 7rem 0;
+        }
+
+        .sobre-grid {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-tag::before {
+            content: '';
+            width: 24px; height: 1px;
+            background: var(--gold);
+        }
+
+        .section-tag span {
+            font-family: var(--font);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .sobre h2 {
+            font-family: var(--font);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--navy);
+            margin-bottom: 1.6rem;
+        }
+
+        .sobre h2 em {
+            font-style: normal; /* removido itálico */
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        .sobre-texto {
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            line-height: 1.9;
+        }
+
+        .sobre-destaque {
+            background: var(--navy);
+            padding: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sobre-destaque::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 60%; height: 2px;
+            background: var(--gold);
+        }
+
+        .sobre-destaque::after {
+            content: '';
+            position: absolute;
+            bottom: -40px; left: -40px;
+            width: 180px; height: 180px;
+            border: 1px solid rgba(184,150,46,0.15);
+            border-radius: 50%;
+        }
+
+        .sobre-destaque h3 {
+            font-family: var(--font);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold-lt);
+            line-height: 1.3;
+        }
+
+        .sobre-destaque p {
+            margin-top: 1.2rem;
+            font-family: var(--font);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.7;
+        }
+
+        /* ─── SOBRE - BLOCO ESTRATEGICO ─── */
+        .sobre-parceira {
+            margin-top: 4rem;
+            background: #050b16;
+            padding: 3.5rem 3rem;
+            color: var(--white);
+        }
+
+        .sobre-parceira-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1.4fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .sobre-parceira h3 {
+            font-family: var(--font);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .sobre-parceira h3 em {
+            color: var(--gold-lt);
+            font-style: normal; /* removido itálico */
+            font-weight: 800;
+        }
+
+        .sobre-parceira-texto {
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
+        }
+
+        /* ─── SERVICOS ─── */
+        .servicos {
+            background: linear-gradient(135deg, #050b16 0%, #071427 50%, #050b16 100%);
+            padding: 7rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .section-header h2 em {
+            font-style: normal; /* removido itálico */
+            color: var(--gold-lt);
+            font-weight: 800;
+        }
+
+        .section-header p {
+            margin-top: 0.8rem;
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            background: transparent;
+            border: none;
+        }
+
+        .servico-card {
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #0b1728;
+            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+        }
+
+        .servico-card::before {
+            content: attr(data-num);
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            font-family: var(--font);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.04);
+            line-height: 1;
+            transition: color 0.35s;
+        }
+
+        .servico-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            border: 2px solid transparent;
+            transition: border-color 0.35s ease;
+        }
+
+        .servico-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 26px 60px rgba(0,0,0,0.7);
+        }
+
+        .servico-card:nth-child(1) {
+            background: radial-gradient(circle at top left, rgba(0,188,212,0.18), transparent 55%), #0b1728;
+        }
+
+        .servico-card:nth-child(1)::after {
+            border-color: rgba(0,188,212,0.7);
+        }
+
+        .servico-card:nth-child(2) {
+            background: radial-gradient(circle at top left, rgba(233,30,99,0.18), transparent 55%), #0b1728;
+        }
+
+        .servico-card:nth-child(2)::after {
+            border-color: rgba(233,30,99,0.7);
+        }
+
+        .servico-card:nth-child(3) {
+            background: radial-gradient(circle at top left, rgba(76,175,80,0.2), transparent 55%), #0b1728;
+        }
+
+        .servico-card:nth-child(3)::after {
+            border-color: rgba(76,175,80,0.75);
+        }
+
+        .servico-card:nth-child(4) {
+            background: radial-gradient(circle at top left, rgba(255,193,7,0.25), transparent 55%), #0b1728;
+        }
+
+        .servico-card:nth-child(4)::after {
+            border-color: rgba(255,193,7,0.8);
+        }
+
+        .servico-icon {
+            width: 44px; height: 44px;
+            border: 1px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.6rem;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.35s;
+        }
+
+        .servico-card:hover .servico-icon {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .servico-card h3 {
+            font-family: var(--font);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            transition: color 0.35s;
+        }
+
+        .servico-card:hover h3 { color: var(--gold-lt); }
+
+        .servico-card p {
+            font-family: var(--font);
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            transition: color 0.35s;
+        }
+
+        .servico-card:hover p { color: rgba(255,255,255,0.9); }
+
+        .servico-link {
+            font-family: var(--font);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .servico-link:hover { gap: 0.85rem; }
+
+        /* ─── DIFERENCIAIS ─── */
+        .diferenciais {
+            background: var(--navy);
+            padding: 7rem 0;
+        }
+
+        .diferenciais .section-header h2 { color: var(--white); }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .diferencial-item {
+            padding: 3rem 2rem;
+            border-right: 1px solid rgba(184,150,46,0.15);
+            border-top: 1px solid rgba(184,150,46,0.15);
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        .diferencial-item:last-child { border-right: none; }
+
+        .diferencial-item:hover { background: rgba(184,150,46,0.05); }
+
+        .diferencial-item::after {
+            content: '';
+            position: absolute;
+            top: -1px; left: 0;
+            width: 0; height: 2px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .diferencial-item:hover::after { width: 100%; }
+
+        .dif-icon {
+            width: 48px; height: 48px;
+            border: 1px solid rgba(184,150,46,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-lt);
+            font-size: 1.1rem;
+            margin-bottom: 1.4rem;
+            transition: all 0.3s;
+        }
+
+        .diferencial-item:hover .dif-icon {
+            border-color: var(--gold);
+            background: rgba(184,150,46,0.1);
+        }
+
+        .diferencial-item h3 {
+            font-family: var(--font);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
+        }
+
+        /* ─── CTA FIXO ─── */
+        .cta-fixo {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            font-family: var(--font);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold-lt);
+            padding: 0.9rem 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background: var(--white);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+            transform: translateY(-2px);
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(184,150,46,0.2);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid rgba(184,150,46,0.12);
+        }
+
+        .footer-logo {
+            font-family: var(--font);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--gold-lt);
+            font-weight: 800;
+        }
+
+        .footer-description {
+            font-family: var(--font);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.8;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.4rem;
+        }
+
+        .footer-col ul { list-style: none; }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            font-family: var(--font);
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover { color: var(--gold-lt); }
+
+        .footer-link-destaque {
+            display: block;
+            font-family: var(--font);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--gold-lt);
+            text-decoration: none;
+            line-height: 1.5;
+            padding-top: 0.4rem;
+            transition: color 0.3s;
+        }
+
+        .footer-link-destaque:hover { color: var(--white); }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            font-family: var(--font);
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.25);
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ─── ANCORAS / OFFSET PARA HEADER FIXO ─── */
+        #contacto {
+            scroll-margin-top: 110px; /* evita que o header fixo cubra a seção */
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 992px) {
+            .nav-menu, .language-switch { display: none; }
+            .hamburger { display: flex; }
+            .hero .container { grid-template-columns: 1fr; }
+            .hero-deco { display: none; }
+            .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .parceira .container { grid-template-columns: 1fr; gap: 2rem; }
+            .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
+            .diferencial-item:nth-child(2) { border-right: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .servicos-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .diferenciais-grid { grid-template-columns: 1fr; }
+            .diferencial-item { border-right: none; }
+            .cta-fixo { bottom: 1rem; right: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#inicio">
+                    <span class="logo-text">
+                        Moz <span class="logo-highlight">Papeladas</span>
+                    </span>
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#inicio" class="active">INICIO</a></li>
+                    <li><a href="#sobre">SOBRE NÓS</a></li>
+                    <li><a href="#servicos">SERVIÇOS</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <ul>
+            <li><a href="#inicio" class="drawer-link">Inicio</a></li>
+            <li><a href="#sobre" class="drawer-link">Sobre Nós</a></li>
+            <li><a href="#servicos" class="drawer-link">Serviços</a></li>
+            <li><a href="#contacto" class="drawer-link">Contacto</a></li>
+        </ul>
+    </div>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">
+                        <span>Consultoria Administrativa em Moçambique</span>
+                    </div>
+                    <h1>
+                        Comprometidos com <em>agilidade</em> e<br>
+                        resultados com segurança jurídica
+                    </h1>
+                    <p class="hero-subtitle">
+                        Cuidamos de toda a papelada, legalização e conformidade para que você foque no crescimento do seu negócio em Moçambique.
+                    </p>
+                    <a href="https://wa.me/258843923195?text=Ola%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Moz%20Papeladas."
+                       class="btn-hero"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <span>AGENDAR CONSULTA JURÍDICA</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="sobre" id="sobre">
+        <div class="container">
+            <div class="sobre-grid">
+                <div class="sobre-content reveal">
+                    <div class="section-tag"><span>Quem Somos</span></div>
+                    <h2>A sua <em>Parceira</em><br>de Confiança</h2>
+                    <p class="sobre-texto">
+                        A Moz Papeladas é uma consultoria especializada em soluções burocráticas e administrativas em Moçambique.
+Atuamos na legalização de empresas e documentos, na assessoria contabilística e tributária e em serviços de tradução juramentada,
+garantindo segurança jurídica e tranquilidade para cidadãos e organizações.
+                    </p>
+                </div>
+            </div>
+            <div class="sobre-parceira">
+                <div class="sobre-parceira-inner">
+                    <div class="reveal">
+                        <h3>Sua <em>Parceira Estratégica</em><br>no Terreno</h3>
+                    </div>
+                    <p class="sobre-parceira-texto reveal reveal-delay-2">
+                        Com profundo conhecimento da realidade mocambicana, a Moz Papeladas conecta exigências legais complexas a soluções práticas e acessíveis.
+                        Apoiamos desde a formalização de novos negócios até a regularização documental contínua, sempre com foco em agilidade, transparência e segurança jurídica.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICOS -->
+    <section class="servicos" id="servicos">
+        <div class="container">
+            <div class="section-header reveal">
+                    <h2>Nossos <em>Principais Serviços</em></h2>
+                    <p>Soluções completas para cada etapa da sua jornada legal e administrativa</p>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card reveal" data-num="01">
+                    <div class="servico-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Legalizacao e Documentação</h3>
+                    <p>Acompanhamento completo em processos de vistos, autorizações, certidões e regularização documental para cidadãos e empresas.</p>
+                    <a href="#contacto" class="servico-link">Saiba Mais</a>
+                </div>
+                <div class="servico-card reveal reveal-delay-1" data-num="02">
+                    <div class="servico-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Gestão Empresarial e Abertura</h3>
+                    <p>Assessoria na constituição de empresas, definição de enquadramento legal e apoio administrativo no dia a dia do negócio.</p>
+                    <a href="#contacto" class="servico-link">Saiba Mais</a>
+                </div>
+                <div class="servico-card reveal reveal-delay-2" data-num="03">
+                    <div class="servico-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Contabilidade e Consultoria Tributária</h3>
+                    <p>Planeamento fiscal, apuramento de impostos e obtenção de comprovativos de regularidade para concursos publicos e financiamentos.</p>
+                    <a href="#contacto" class="servico-link">Saiba Mais</a>
+                </div>
+                <div class="servico-card reveal reveal-delay-3" data-num="04">
+                    <div class="servico-icon"><i class="fas fa-language"></i></div>
+                    <h3>Tradução Juramentada</h3>
+                    <p>Traduções oficiais com validade legal para contratos, certidões, relatórios e outros documentos sensíveis.</p>
+                    <a href="#contacto" class="servico-link">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-logo">MOZ <span>PAPELADAS</span></h3>
+                    <p class="footer-description">
+                        Soluções burocráticas e administrativas que unem agilidade e segurança jurídica em Moçambique.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Legalização e Documentação</a></li>
+                        <li><a href="#servicos">Gestão Empresarial</a></li>
+                        <li><a href="#servicos">Tradução Juramentada</a></li>
+                        <li><a href="#servicos">Contabilidade e Consultoria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contactos</h4>
+                    <ul>
+                        <li><a href="tel:+258843923195">+258 84 392 3195</a></li>
+                        <li><a href="mailto:emidiomadeira@gmail.com">emidiomadeira@gmail.com</a></li>
+                        <li><a href="#">Pemba - Moçambique</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Consultor</h4>
+                    <a href="https://wa.me/258843923195?text=Ola%2C%20gostaria%20de%20falar%20com%20um%20consultor"
+                       class="footer-link-destaque"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Falar com um consultor
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2026 Moz Papeladas. Todos os direitos reservados.</p>
+                <p>Pemba, Moçambique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal: apenas disparar quando rolar para baixo, manter visível ao subir
+        const reveals = document.querySelectorAll('.reveal');
+        let lastY = window.scrollY;
+        let direction = 'down';
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            direction = y > lastY ? 'down' : 'up';
+            lastY = y;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting && direction === 'down') {
+                    // entrou em vista rolando para baixo -> animar
+                    e.target.classList.add('visible');
+                } else if (!e.isIntersecting && direction === 'up') {
+                    // saiu de vista rolando para cima -> resetar para futura animação
+                    e.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+        reveals.forEach(r => observer.observe(r));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('header');
+            if (!h) return;
+            const scrolled = window.scrollY > 40;
+            h.classList.toggle('header-blur', scrolled);
+        });
+
+        // Hamburger / Drawer
+        const hamburger = document.getElementById('hamburger');
+        const drawer    = document.getElementById('mobileDrawer');
+        const overlay   = document.getElementById('drawerOverlay');
+
+        function toggleDrawer(state) {
+            hamburger.classList.toggle('open', state);
+            drawer.classList.toggle('open', state);
+            overlay.classList.toggle('open', state);
+            document.body.style.overflow = state ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = drawer.classList.contains('open');
+            toggleDrawer(!isOpen);
+        });
+        overlay.addEventListener('click', () => toggleDrawer(false));
+
+        document.querySelectorAll('.drawer-link').forEach(link => {
+            link.addEventListener('click', () => toggleDrawer(false));
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => {
+                if (window.scrollY >= s.offsetTop - 100) current = s.id;
+            });
+            document.querySelectorAll('.nav-menu a').forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        });
+    </script>
+</body>
+</html>
