@@ -401,8 +401,63 @@
     color: var(--text-muted);
     line-height: 1.9;
 }
+/* ─── SOBRE ─── */
+.sobre {
+    background: var(--cream);
+    padding: 7rem 0;
+}
 
-/* NOVO: MVP Grid (Missão, Visão, Valores) */
+.sobre-grid {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+}
+
+.section-tag::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--gold);
+}
+
+.section-tag span {
+    font-family: var(--font);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.sobre h2 {
+    font-family: var(--font);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 1.6rem;
+}
+
+.sobre h2 em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 800;
+}
+
+.sobre-texto {
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.9;
+}
+
+/* MISSÃO, VISÃO E VALORES CENTRALIZADOS */
 .mvp-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -411,12 +466,13 @@
 }
 
 .mvp-item {
-    background: #050b16; /* ALTERADO para azul escuro */
+    background: #050b16;
     padding: 2.5rem 2rem;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(184,150,46,0.15); /* borda sutil dourada */
+    border: 1px solid rgba(184,150,46,0.15);
+    text-align: center; /* CENTRALIZADO */
 }
 
 .mvp-item:hover {
@@ -431,7 +487,7 @@
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gold); /* dourado mantido */
+    color: var(--gold);
     margin-bottom: 1rem;
     position: relative;
     padding-bottom: 0.75rem;
@@ -441,7 +497,8 @@
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%; /* CENTRALIZADO */
+    transform: translateX(-50%); /* CENTRALIZADO */
     width: 40px;
     height: 2px;
     background: var(--gold);
@@ -451,62 +508,214 @@
     font-family: var(--font);
     font-size: 0.95rem;
     font-weight: 400;
-    color: var(--text); /* texto claro para contrastar com fundo escuro */
+    color: var(--text);
     line-height: 1.7;
     opacity: 0.9;
-}
-.sobre-destaque {
-    background: var(--navy);
-    padding: 3.5rem;
-    position: relative;
-    overflow: hidden;
+    text-align: center; /* CENTRALIZADO */
 }
 
-.sobre-destaque::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 60%; height: 2px;
-    background: var(--gold);
+/* PARCEIRA ESTRATÉGICA CENTRALIZADA */
+.sobre-parceira {
+    margin-top: 4rem;
+    background: #050b16;
+    padding: 3.5rem 0;
+    color: var(--white);
+    width: 100%;
+    text-align: left; /* CENTRALIZADO */
 }
 
-.sobre-destaque::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: -40px;
-    width: 180px; height: 180px;
-    border: 1px solid rgba(184,150,46,0.15);
-    border-radius: 50%;
+.sobre-parceira-content {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.sobre-destaque h3 {
+.sobre-parceira h3 {
     font-family: var(--font);
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 700;
-    color: var(--gold-lt);
     line-height: 1.3;
+    color: var(--white);
+    margin-bottom: 1.5rem;
 }
 
-.sobre-destaque p {
-    margin-top: 1.2rem;
+.sobre-parceira h3 em {
+    color: var(--gold-lt);
+    font-style: normal;
+    font-weight: 800;
+}
+
+.sobre-parceira-texto {
     font-family: var(--font);
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 400;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 992px) {
+    .mvp-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .sobre-parceira {
+        padding: 3rem 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .mvp-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .mvp-item {
+        padding: 2rem 1.5rem;
+    }
+    
+    .sobre-parceira {
+        padding: 2.5rem 0;
+    }
+    
+    .sobre-parceira h3 {
+        font-size: 1.8rem;
+    }
+    
+    .sobre-parceira-texto {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
+}
+/* RESPONSIVO - Tablet (≤992px) */
+@media (max-width: 992px) {
+    .sobre {
+        padding: 5rem 0;
+    }
+    
+    /* MVP Grid */
+    .mvp-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Bloco Estratégico */
+    .sobre-parceira {
+        padding: 3rem 0;
+    }
+    
+    .sobre-parceira-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .sobre-parceira h3 br {
+        display: none;
+    }
+}
+
+/* RESPONSIVO - Mobile (≤768px) */
+@media (max-width: 768px) {
+    .sobre {
+        padding: 4rem 0;
+    }
+    
+    .sobre h2 {
+        font-size: 2rem;
+    }
+}
+
+/* RESPONSIVO - Mobile Pequeno (≤640px) */
+@media (max-width: 640px) {
+    .sobre {
+        padding: 3.5rem 0;
+    }
+    
+    .sobre .container {
+        padding: 0 1.5rem;
+    }
+    
+    /* MVP Grid vira 1 coluna */
+    .mvp-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        margin: 3rem 0;
+    }
+    
+    .mvp-item {
+        padding: 2rem 1.5rem;
+    }
+    
+    .mvp-item h4 {
+        font-size: 0.8rem;
+    }
+    
+    .mvp-item p {
+        font-size: 0.9rem;
+    }
+    
+    /* Bloco Estratégico */
+    .sobre-parceira {
+        padding: 2.5rem 0;
+        margin-top: 3rem;
+    }
+    
+    .sobre-parceira .container {
+        padding: 0 1.5rem;
+    }
+    
+    .sobre-parceira-inner {
+        gap: 1.5rem;
+    }
+    
+    .sobre-parceira h3 {
+        font-size: 1.8rem;
+    }
+    
+    .sobre-parceira-texto {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
+
+/* RESPONSIVO - Telas muito pequenas (≤480px) */
+@media (max-width: 480px) {
+    .sobre h2 {
+        font-size: 1.8rem;
+    }
+    
+    .sobre-texto {
+        font-size: 0.95rem;
+    }
+    
+    .sobre-parceira h3 {
+        font-size: 1.6rem;
+    }
+    
+    .sobre-parceira-texto {
+        font-size: 0.9rem;
+    }
 }
 
 /* ─── SOBRE - BLOCO ESTRATEGICO ─── */
 .sobre-parceira {
     margin-top: 4rem;
     background: #050b16;
-    padding: 3.5rem 3rem;
+    padding: 3.5rem 0; /* ALTERADO: padding lateral removido, será controlado pelo container */
     color: var(--white);
+    width: 100%;
+}
+
+.sobre-parceira .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .sobre-parceira-inner {
-    max-width: 960px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1.2fr 1.4fr;
     gap: 4rem;
@@ -518,6 +727,7 @@
     font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 700;
     line-height: 1.3;
+    color: var(--white);
 }
 
 .sobre-parceira h3 em {
@@ -532,22 +742,59 @@
     font-weight: 400;
     color: rgba(255,255,255,0.7);
     line-height: 1.9;
+    margin: 0;
 }
 
-/* Responsivo para MVP Grid */
+/* RESPONSIVO - Tablets */
 @media (max-width: 992px) {
-    .mvp-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .mvp-grid {
-        grid-template-columns: 1fr;
+    .sobre-parceira {
+        padding: 3rem 0;
     }
     
-    .mvp-item {
-        padding: 2rem 1.5rem;
+    .sobre-parceira-inner {
+        grid-template-columns: 1fr; /* MUDA PARA 1 COLUNA */
+        gap: 2rem;
+        text-align: center; /* CENTRALIZA O TEXTO */
+    }
+    
+    .sobre-parceira h3 br {
+        display: none; /* REMOVE A QUEBRA DE LINHA */
+    }
+}
+
+/* RESPONSIVO - Mobile */
+@media (max-width: 640px) {
+    .sobre-parceira {
+        padding: 2.5rem 0;
+        margin-top: 3rem;
+    }
+    
+    .sobre-parceira .container {
+        padding: 0 1.5rem; /* REDUZ PADDING LATERAL */
+    }
+    
+    .sobre-parceira-inner {
+        gap: 1.5rem;
+    }
+    
+    .sobre-parceira h3 {
+        font-size: 1.8rem; /* TAMANHO FIXO PARA MOBILE */
+    }
+    
+    .sobre-parceira-texto {
+        font-size: 0.95rem; /* TEXTO LIGEIRAMENTE MENOR */
+        line-height: 1.7;
+    }
+}
+
+/* RESPONSIVO - Telas muito pequenas */
+@media (max-width: 480px) {
+    .sobre-parceira h3 {
+        font-size: 1.6rem;
+    }
+    
+    .sobre-parceira-texto {
+        font-size: 0.9rem;
     }
 }
 /* PORQUE ESCOLHER A MOZ PAPELADAS */
@@ -658,7 +905,7 @@
         padding: 2rem 1.5rem;
     }
 }
-       /* ─── SERVICOS ─── */
+   /* ─── SERVICOS ─── */
 .servicos {
     background: linear-gradient(135deg, #050b16 0%, #071427 50%, #050b16 100%);
     padding: 7rem 0;
@@ -691,6 +938,7 @@
     color: rgba(255,255,255,0.6);
 }
 
+/* GRID DOS CARDS */
 .servicos-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -699,15 +947,21 @@
     border: none;
 }
 
+/* CARDS COM FLEX PARA ALINHAR BOTÕES */
 .servico-card {
-    padding: 3rem;
+    padding: 2.5rem;
     position: relative;
     overflow: hidden;
     border-radius: 18px;
     background: #0b1728;
     border: 1px solid rgba(255,255,255,0.04);
     box-shadow: 0 18px 40px rgba(0,0,0,0.55);
-    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    
+    /* FLEX PARA ALINHAR BOTÕES */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .servico-card::before {
@@ -737,10 +991,10 @@
     box-shadow: 0 26px 60px rgba(0,0,0,0.7);
 }
 
+/* CORES DOS CARDS */
 .servico-card:nth-child(1) {
     background: radial-gradient(circle at top left, rgba(0,188,212,0.18), transparent 55%), #0b1728;
 }
-
 .servico-card:nth-child(1)::after {
     border-color: rgba(0,188,212,0.7);
 }
@@ -748,7 +1002,6 @@
 .servico-card:nth-child(2) {
     background: radial-gradient(circle at top left, rgba(233,30,99,0.18), transparent 55%), #0b1728;
 }
-
 .servico-card:nth-child(2)::after {
     border-color: rgba(233,30,99,0.7);
 }
@@ -756,7 +1009,6 @@
 .servico-card:nth-child(3) {
     background: radial-gradient(circle at top left, rgba(76,175,80,0.2), transparent 55%), #0b1728;
 }
-
 .servico-card:nth-child(3)::after {
     border-color: rgba(76,175,80,0.75);
 }
@@ -764,18 +1016,18 @@
 .servico-card:nth-child(4) {
     background: radial-gradient(circle at top left, rgba(255,193,7,0.25), transparent 55%), #0b1728;
 }
-
 .servico-card:nth-child(4)::after {
     border-color: rgba(255,193,7,0.8);
 }
 
+/* ÍCONE */
 .servico-icon {
     width: 44px; height: 44px;
     border: 1px solid rgba(255,255,255,0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.5rem;
     color: var(--white);
     font-size: 1rem;
     transition: all 0.35s;
@@ -786,23 +1038,26 @@
     color: var(--navy);
 }
 
+/* TÍTULO */
 .servico-card h3 {
     font-family: var(--font);
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--white);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     line-height: 1.3;
     transition: color 0.35s;
+    min-height: 3.5rem; /* Altura mínima para títulos com 2 linhas */
 }
 
 .servico-card:hover h3 { 
     color: var(--gold-lt); 
 }
 
-/* NOVOS ESTILOS PARA AS LISTAS DOS SERVIÇOS */
+/* LISTA DOS SERVIÇOS */
 .servico-lista {
-    margin: 1.5rem 0 2rem;
+    flex: 1; /* OCUPA ESPAÇO RESTANTE PARA ALINHAR BOTÕES */
+    margin-bottom: 1.5rem;
 }
 
 .servico-lista p {
@@ -836,18 +1091,7 @@
     color: rgba(255,255,255,0.9);
 }
 
-.servico-card p {
-    /* Mantém o estilo original para outros parágrafos */
-    font-family: var(--font);
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    transition: color 0.35s;
-}
-
-/* ESTILO DO BOTÃO SAIBA MAIS (igual ao btn-hero) */
+/* BOTÃO SAIBA MAIS - ALINHADO NO FUNDO */
 .btn-servico {
     display: inline-block;
     font-family: var(--font);
@@ -864,8 +1108,10 @@
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    margin-top: 1.5rem;
-    border-radius: 0; /* manter quadrado como o hero */
+    border-radius: 4px;
+    width: fit-content;
+    margin-top: auto; /* EMPURRA PARA O FUNDO */
+    align-self: flex-start;
 }
 
 .btn-servico::before {
@@ -880,6 +1126,7 @@
 .btn-servico span { 
     position: relative; 
     z-index: 1; 
+    white-space: nowrap;
 }
 
 .btn-servico:hover::before { 
@@ -890,11 +1137,7 @@
     color: var(--navy); 
 }
 
-/* Para garantir que o texto não quebre */
-.btn-servico span {
-    white-space: nowrap;
-}
-/* Responsivo */
+/* RESPONSIVO */
 @media (max-width: 992px) {
     .servicos-grid {
         grid-template-columns: 1fr;
@@ -903,6 +1146,10 @@
     
     .servico-card {
         padding: 2.5rem;
+    }
+    
+    .servico-card h3 {
+        min-height: auto; /* Remove altura mínima em mobile */
     }
 }
 
@@ -913,11 +1160,14 @@
     
     .servico-card h3 {
         font-size: 1.2rem;
+        min-height: auto;
+    }
+    
+    .btn-servico {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.7rem;
     }
 }
-
-        .servico-link:hover { gap: 0.85rem; }
-
         /* ─── DIFERENCIAIS ─── */
         .diferenciais {
             background: var(--navy);
@@ -1207,7 +1457,7 @@
                        class="btn-hero"
                        target="_blank"
                        rel="noopener noreferrer">
-                        <span>AGENDAR CONSULTA JURÍDICA</span>
+                        <span>AGENDAR CONSULTA INICIAL</span>
                     </a>
                 </div>
             </div>
@@ -1227,7 +1477,7 @@
             </div>
         </div>
 
-        <!-- MISSÃO, VISÃO E VALORES -->
+        <!-- MISSÃO, VISÃO E VALORES CENTRALIZADOS -->
         <div class="mvp-grid">
             <div class="mvp-item reveal">
                 <h4>MISSÃO</h4>
@@ -1243,17 +1493,20 @@
             </div>
         </div>
 
-       <!-- PARCEIRA ESTRATÉGICA -->
-<div class="sobre-parceira">
-    <div class="sobre-parceira-inner">
-        <div class="reveal">
-            <h3>Sua <em>Parceira Estratégica</em><br>no Terreno</h3>
+        <!-- PARCEIRA ESTRATÉGICA CENTRALIZADA -->
+        <div class="sobre-parceira">
+            <div class="container">
+                <div class="sobre-parceira-content">
+                    <div class="reveal">
+                        <h3>Sua <em>Parceira Estratégica</em> no Terreno</h3>
+                    </div>
+                    <p class="sobre-parceira-texto reveal reveal-delay-2">
+                        Com profundo conhecimento da realidade moçambicana, a Moz Papeladas conecta exigências legais complexas a soluções práticas e acessíveis. Apoiamos desde a formalização de novos negócios até a regularização documental contínua, sempre com foco em agilidade, transparência e segurança jurídica.
+                    </p>
+                </div>
+            </div>
         </div>
-        <p class="sobre-parceira-texto reveal reveal-delay-2">
-            Com profundo conhecimento da realidade moçambicana, a Moz Papeladas conecta exigências legais complexas a soluções práticas. Do design da marca à submissão do imposto. Cuidamos de tudo com o mais alto sigilo, organização e transparência.
-        </p>
     </div>
-</div>
 </section>
 
         <!-- PORQUE ESCOLHER A MOZ PAPELADAS -->
@@ -1382,10 +1635,10 @@
                 <div class="footer-col">
                     <h4>Serviços</h4>
                     <ul>
-                        <li><a href="#servicos">Legalização e Documentação</a></li>
-                        <li><a href="#servicos">Gestão Empresarial</a></li>
-                        <li><a href="#servicos">Tradução Juramentada</a></li>
-                        <li><a href="#servicos">Contabilidade e Consultoria</a></li>
+                        <li><a href="#servicos">Gestão Documental e Imigração</a></li>
+                        <li><a href="#servicos">Constituição e Legalização de Empresas e Associações</a></li>
+                        <li><a href="#servicos">Contabilidade e consultoria tributária</a></li>
+                        <li><a href="#servicos">Identidade Corporativa e Branding</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
