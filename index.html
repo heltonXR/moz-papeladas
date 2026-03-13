@@ -300,16 +300,20 @@
         }
 
         .hero-subtitle {
-            font-family: var(--font);
-            font-size: 1.05rem;
-            font-weight: 400;
-            color: rgba(247,243,236,0.65);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            max-width: 560px;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.6s forwards;
-        }
+    font-family: var(--font);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgba(247,243,236,0.65);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 700px; /* aumentei um pouco */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* esta é a linha que faltava! */
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+}
+        
 
         .btn-hero {
             display: inline-block;
@@ -342,306 +346,575 @@
         .btn-hero:hover::before { transform: translateX(0); }
         .btn-hero:hover { color: var(--navy); }
 
-        /* ─── SOBRE ─── */
-        .sobre {
-            background: var(--cream);
-            padding: 7rem 0;
-        }
+       /* ─── SOBRE ─── */
+.sobre {
+    background: var(--cream);
+    padding: 7rem 0;
+}
 
-        .sobre-grid {
-            max-width: 860px;
-            margin: 0 auto;
-        }
+.sobre-grid {
+    max-width: 860px;
+    margin: 0 auto;
+}
 
-        .section-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 1.2rem;
-        }
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+}
 
-        .section-tag::before {
-            content: '';
-            width: 24px; height: 1px;
-            background: var(--gold);
-        }
+.section-tag::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--gold);
+}
 
-        .section-tag span {
-            font-family: var(--font);
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
+.section-tag span {
+    font-family: var(--font);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
 
-        .sobre h2 {
-            font-family: var(--font);
-            font-size: clamp(2rem, 3.5vw, 3rem);
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--navy);
-            margin-bottom: 1.6rem;
-        }
+.sobre h2 {
+    font-family: var(--font);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 1.6rem;
+}
 
-        .sobre h2 em {
-            font-style: normal; /* removido itálico */
-            color: var(--gold);
-            font-weight: 800;
-        }
+.sobre h2 em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 800;
+}
 
-        .sobre-texto {
-            font-family: var(--font);
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--text-muted);
-            line-height: 1.9;
-        }
+.sobre-texto {
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.9;
+}
 
-        .sobre-destaque {
-            background: var(--navy);
-            padding: 3.5rem;
-            position: relative;
-            overflow: hidden;
-        }
+/* NOVO: MVP Grid (Missão, Visão, Valores) */
+.mvp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 4rem 0;
+}
 
-        .sobre-destaque::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 60%; height: 2px;
-            background: var(--gold);
-        }
+.mvp-item {
+    background: #050b16; /* ALTERADO para azul escuro */
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(184,150,46,0.15); /* borda sutil dourada */
+}
 
-        .sobre-destaque::after {
-            content: '';
-            position: absolute;
-            bottom: -40px; left: -40px;
-            width: 180px; height: 180px;
-            border: 1px solid rgba(184,150,46,0.15);
-            border-radius: 50%;
-        }
+.mvp-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border-color: rgba(184,150,46,0.3);
+}
 
-        .sobre-destaque h3 {
-            font-family: var(--font);
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--gold-lt);
-            line-height: 1.3;
-        }
+.mvp-item h4 {
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold); /* dourado mantido */
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
 
-        .sobre-destaque p {
-            margin-top: 1.2rem;
-            font-family: var(--font);
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: rgba(255,255,255,0.45);
-            line-height: 1.7;
-        }
+.mvp-item h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+}
 
-        /* ─── SOBRE - BLOCO ESTRATEGICO ─── */
-        .sobre-parceira {
-            margin-top: 4rem;
-            background: #050b16;
-            padding: 3.5rem 3rem;
-            color: var(--white);
-        }
+.mvp-item p {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text); /* texto claro para contrastar com fundo escuro */
+    line-height: 1.7;
+    opacity: 0.9;
+}
+.sobre-destaque {
+    background: var(--navy);
+    padding: 3.5rem;
+    position: relative;
+    overflow: hidden;
+}
 
-        .sobre-parceira-inner {
-            max-width: 960px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.2fr 1.4fr;
-            gap: 4rem;
-            align-items: center;
-        }
+.sobre-destaque::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%; height: 2px;
+    background: var(--gold);
+}
 
-        .sobre-parceira h3 {
-            font-family: var(--font);
-            font-size: clamp(1.8rem, 3vw, 2.4rem);
-            font-weight: 700;
-            line-height: 1.3;
-        }
+.sobre-destaque::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 180px; height: 180px;
+    border: 1px solid rgba(184,150,46,0.15);
+    border-radius: 50%;
+}
 
-        .sobre-parceira h3 em {
-            color: var(--gold-lt);
-            font-style: normal; /* removido itálico */
-            font-weight: 800;
-        }
+.sobre-destaque h3 {
+    font-family: var(--font);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold-lt);
+    line-height: 1.3;
+}
 
-        .sobre-parceira-texto {
-            font-family: var(--font);
-            font-size: 1rem;
-            font-weight: 400;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.9;
-        }
+.sobre-destaque p {
+    margin-top: 1.2rem;
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+}
 
-        /* ─── SERVICOS ─── */
-        .servicos {
-            background: linear-gradient(135deg, #050b16 0%, #071427 50%, #050b16 100%);
-            padding: 7rem 0;
-        }
+/* ─── SOBRE - BLOCO ESTRATEGICO ─── */
+.sobre-parceira {
+    margin-top: 4rem;
+    background: #050b16;
+    padding: 3.5rem 3rem;
+    color: var(--white);
+}
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+.sobre-parceira-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1.4fr;
+    gap: 4rem;
+    align-items: center;
+}
 
-        .section-header h2 {
-            font-family: var(--font);
-            font-size: clamp(2rem, 3.5vw, 3rem);
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1.2;
-        }
+.sobre-parceira h3 {
+    font-family: var(--font);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.3;
+}
 
-        .section-header h2 em {
-            font-style: normal; /* removido itálico */
-            color: var(--gold-lt);
-            font-weight: 800;
-        }
+.sobre-parceira h3 em {
+    color: var(--gold-lt);
+    font-style: normal;
+    font-weight: 800;
+}
 
-        .section-header p {
-            margin-top: 0.8rem;
-            font-family: var(--font);
-            font-weight: 400;
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.6);
-        }
+.sobre-parceira-texto {
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.9;
+}
 
-        .servicos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            background: transparent;
-            border: none;
-        }
+/* Responsivo para MVP Grid */
+@media (max-width: 992px) {
+    .mvp-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-        .servico-card {
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-            border-radius: 18px;
-            background: #0b1728;
-            border: 1px solid rgba(255,255,255,0.04);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.55);
-            transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
-        }
+@media (max-width: 640px) {
+    .mvp-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mvp-item {
+        padding: 2rem 1.5rem;
+    }
+}
+/* PORQUE ESCOLHER A MOZ PAPELADAS */
+.diferenciais-nova {
+    background: var(--cream); /* fundo branco */
+    padding: 5rem 0;
+}
 
-        .servico-card::before {
-            content: attr(data-num);
-            position: absolute;
-            top: 2rem;
-            right: 2.5rem;
-            font-family: var(--font);
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: rgba(255,255,255,0.04);
-            line-height: 1;
-            transition: color 0.35s;
-        }
+/* AJUSTE NO TÍTULO */
+.diferenciais-nova .section-header h2 {
+    color: #050b16; /* azul escuro para "Por que escolher a" */
+    font-family: var(--font);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
 
-        .servico-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 18px;
-            border: 2px solid transparent;
-            transition: border-color 0.35s ease;
-        }
+.diferenciais-nova .section-header h2 em {
+    color: var(--gold-lt); /* dourado para "Moz Papeladas?" */
+    font-style: normal;
+    font-weight: 800;
+}
 
-        .servico-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 26px 60px rgba(0,0,0,0.7);
-        }
+.diferenciais-grid-nova {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
 
-        .servico-card:nth-child(1) {
-            background: radial-gradient(circle at top left, rgba(0,188,212,0.18), transparent 55%), #0b1728;
-        }
+.diferencial-item-nova {
+    background: #050b16; /* azul escuro */
+    padding: 2.5rem 1.8rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(184,150,46,0.15);
+    text-align: left;
+}
 
-        .servico-card:nth-child(1)::after {
-            border-color: rgba(0,188,212,0.7);
-        }
+.diferencial-item-nova:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(184,150,46,0.15);
+    border-color: var(--gold-lt);
+}
 
-        .servico-card:nth-child(2) {
-            background: radial-gradient(circle at top left, rgba(233,30,99,0.18), transparent 55%), #0b1728;
-        }
+.dif-icon-nova {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--gold-lt);
+    border: 2px solid var(--gold-lt);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
 
-        .servico-card:nth-child(2)::after {
-            border-color: rgba(233,30,99,0.7);
-        }
+.diferencial-item-nova:hover .dif-icon-nova {
+    background: var(--gold-lt);
+    color: #050b16;
+}
 
-        .servico-card:nth-child(3) {
-            background: radial-gradient(circle at top left, rgba(76,175,80,0.2), transparent 55%), #0b1728;
-        }
+.diferencial-item-nova h3 {
+    font-family: var(--font);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
 
-        .servico-card:nth-child(3)::after {
-            border-color: rgba(76,175,80,0.75);
-        }
+.diferencial-item-nova h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gold-lt);
+}
 
-        .servico-card:nth-child(4) {
-            background: radial-gradient(circle at top left, rgba(255,193,7,0.25), transparent 55%), #0b1728;
-        }
+.diferencial-item-nova p {
+    font-family: var(--font);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+}
 
-        .servico-card:nth-child(4)::after {
-            border-color: rgba(255,193,7,0.8);
-        }
+/* Responsivo */
+@media (max-width: 992px) {
+    .diferenciais-grid-nova {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
 
-        .servico-icon {
-            width: 44px; height: 44px;
-            border: 1px solid rgba(255,255,255,0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.6rem;
-            color: var(--white);
-            font-size: 1rem;
-            transition: all 0.35s;
-        }
+@media (max-width: 640px) {
+    .diferenciais-grid-nova {
+        grid-template-columns: 1fr;
+    }
+    
+    .diferencial-item-nova {
+        padding: 2rem 1.5rem;
+    }
+}
+       /* ─── SERVICOS ─── */
+.servicos {
+    background: linear-gradient(135deg, #050b16 0%, #071427 50%, #050b16 100%);
+    padding: 7rem 0;
+}
 
-        .servico-card:hover .servico-icon {
-            background: var(--white);
-            color: var(--navy);
-        }
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
 
-        .servico-card h3 {
-            font-family: var(--font);
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-            transition: color 0.35s;
-        }
+.section-header h2 {
+    font-family: var(--font);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+}
 
-        .servico-card:hover h3 { color: var(--gold-lt); }
+.section-header h2 em {
+    font-style: normal;
+    color: var(--gold-lt);
+    font-weight: 800;
+}
 
-        .servico-card p {
-            font-family: var(--font);
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            transition: color 0.35s;
-        }
+.section-header p {
+    margin-top: 0.8rem;
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+}
 
-        .servico-card:hover p { color: rgba(255,255,255,0.9); }
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    background: transparent;
+    border: none;
+}
 
-        .servico-link {
-            font-family: var(--font);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gold);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s;
-        }
+.servico-card {
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #0b1728;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.servico-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    font-family: var(--font);
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    transition: color 0.35s;
+}
+
+.servico-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    transition: border-color 0.35s ease;
+}
+
+.servico-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 26px 60px rgba(0,0,0,0.7);
+}
+
+.servico-card:nth-child(1) {
+    background: radial-gradient(circle at top left, rgba(0,188,212,0.18), transparent 55%), #0b1728;
+}
+
+.servico-card:nth-child(1)::after {
+    border-color: rgba(0,188,212,0.7);
+}
+
+.servico-card:nth-child(2) {
+    background: radial-gradient(circle at top left, rgba(233,30,99,0.18), transparent 55%), #0b1728;
+}
+
+.servico-card:nth-child(2)::after {
+    border-color: rgba(233,30,99,0.7);
+}
+
+.servico-card:nth-child(3) {
+    background: radial-gradient(circle at top left, rgba(76,175,80,0.2), transparent 55%), #0b1728;
+}
+
+.servico-card:nth-child(3)::after {
+    border-color: rgba(76,175,80,0.75);
+}
+
+.servico-card:nth-child(4) {
+    background: radial-gradient(circle at top left, rgba(255,193,7,0.25), transparent 55%), #0b1728;
+}
+
+.servico-card:nth-child(4)::after {
+    border-color: rgba(255,193,7,0.8);
+}
+
+.servico-icon {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+    color: var(--white);
+    font-size: 1rem;
+    transition: all 0.35s;
+}
+
+.servico-card:hover .servico-icon {
+    background: var(--white);
+    color: var(--navy);
+}
+
+.servico-card h3 {
+    font-family: var(--font);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    transition: color 0.35s;
+}
+
+.servico-card:hover h3 { 
+    color: var(--gold-lt); 
+}
+
+/* NOVOS ESTILOS PARA AS LISTAS DOS SERVIÇOS */
+.servico-lista {
+    margin: 1.5rem 0 2rem;
+}
+
+.servico-lista p {
+    font-family: var(--font);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-left: 1.2rem;
+    position: relative;
+    transition: color 0.35s;
+}
+
+.servico-lista p::before {
+    content: '•';
+    color: var(--gold-lt);
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.servico-lista p strong {
+    color: var(--gold-lt);
+    font-weight: 600;
+}
+
+.servico-card:hover .servico-lista p {
+    color: rgba(255,255,255,0.9);
+}
+
+.servico-card p {
+    /* Mantém o estilo original para outros parágrafos */
+    font-family: var(--font);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    transition: color 0.35s;
+}
+
+/* ESTILO DO BOTÃO SAIBA MAIS (igual ao btn-hero) */
+.btn-servico {
+    display: inline-block;
+    font-family: var(--font);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold-lt);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    border-radius: 0; /* manter quadrado como o hero */
+}
+
+.btn-servico::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+    transform: translateX(-101%);
+    transition: transform 0.35s ease;
+}
+
+.btn-servico span { 
+    position: relative; 
+    z-index: 1; 
+}
+
+.btn-servico:hover::before { 
+    transform: translateX(0); 
+}
+
+.btn-servico:hover { 
+    color: var(--navy); 
+}
+
+/* Para garantir que o texto não quebre */
+.btn-servico span {
+    white-space: nowrap;
+}
+/* Responsivo */
+@media (max-width: 992px) {
+    .servicos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .servico-card {
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .servico-card {
+        padding: 2rem;
+    }
+    
+    .servico-card h3 {
+        font-size: 1.2rem;
+    }
+}
 
         .servico-link:hover { gap: 0.85rem; }
 
@@ -925,12 +1198,12 @@
                     </div>
                     <h1>
                         Comprometidos com <em>agilidade</em> e<br>
-                        resultados com segurança jurídica
+                        resultados com <em>segurança jurídica</em>
                     </h1>
                     <p class="hero-subtitle">
                         Cuidamos de toda a papelada, legalização e conformidade para que você foque no crescimento do seu negócio em Moçambique.
                     </p>
-                    <a href="https://wa.me/258843923195?text=Ola%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Moz%20Papeladas."
+                    <a href="https://wa.me/258878636773?text=Ola%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Moz%20Papeladas."
                        class="btn-hero"
                        target="_blank"
                        rel="noopener noreferrer">
@@ -941,69 +1214,160 @@
         </div>
     </section>
 
-    <!-- SOBRE -->
-    <section class="sobre" id="sobre">
-        <div class="container">
-            <div class="sobre-grid">
-                <div class="sobre-content reveal">
-                    <div class="section-tag"><span>Quem Somos</span></div>
-                    <h2>A sua <em>Parceira</em><br>de Confiança</h2>
-                    <p class="sobre-texto">
-                        A Moz Papeladas é uma consultoria especializada em soluções burocráticas e administrativas em Moçambique.
-Atuamos na legalização de empresas e documentos, na assessoria contabilística e tributária e em serviços de tradução juramentada,
-garantindo segurança jurídica e tranquilidade para cidadãos e organizações.
-                    </p>
-                </div>
-            </div>
-            <div class="sobre-parceira">
-                <div class="sobre-parceira-inner">
-                    <div class="reveal">
-                        <h3>Sua <em>Parceira Estratégica</em><br>no Terreno</h3>
-                    </div>
-                    <p class="sobre-parceira-texto reveal reveal-delay-2">
-                        Com profundo conhecimento da realidade mocambicana, a Moz Papeladas conecta exigências legais complexas a soluções práticas e acessíveis.
-                        Apoiamos desde a formalização de novos negócios até a regularização documental contínua, sempre com foco em agilidade, transparência e segurança jurídica.
-                    </p>
-                </div>
+  <!-- SOBRE -->
+<section class="sobre" id="sobre">
+    <div class="container">
+        <div class="sobre-grid">
+            <div class="sobre-content reveal">
+                <div class="section-tag"><span>QUEM SOMOS</span></div>
+                <h2>Unimos <em>Conhecimento Local</em> e <em>Padrões Internacionais</em> para viabilizar o seu sucesso em Moçambique.</h2>
+                <p class="sobre-texto">
+                    A Moz Papeladas é uma consultoria de referência em soluções burocráticas e administrativas em Moçambique. Combinamos um profundo entendimento do mercado local com o rigor técnico de padrões internacionais, garantindo segurança jurídica e eficiência administrativa.
+                </p>
             </div>
         </div>
-    </section>
 
-    <!-- SERVICOS -->
-    <section class="servicos" id="servicos">
-        <div class="container">
-            <div class="section-header reveal">
-                    <h2>Nossos <em>Principais Serviços</em></h2>
-                    <p>Soluções completas para cada etapa da sua jornada legal e administrativa</p>
+        <!-- MISSÃO, VISÃO E VALORES -->
+        <div class="mvp-grid">
+            <div class="mvp-item reveal">
+                <h4>MISSÃO</h4>
+                <p>Descomplicar a burocracia moçambicana para impulsionar o empreendedorismo e a conformidade legal.</p>
             </div>
-            <div class="servicos-grid">
-                <div class="servico-card reveal" data-num="01">
-                    <div class="servico-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3>Legalizacao e Documentação</h3>
-                    <p>Acompanhamento completo em processos de vistos, autorizações, certidões e regularização documental para cidadãos e empresas.</p>
-                    <a href="#contacto" class="servico-link">Saiba Mais</a>
-                </div>
-                <div class="servico-card reveal reveal-delay-1" data-num="02">
-                    <div class="servico-icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>Gestão Empresarial e Abertura</h3>
-                    <p>Assessoria na constituição de empresas, definição de enquadramento legal e apoio administrativo no dia a dia do negócio.</p>
-                    <a href="#contacto" class="servico-link">Saiba Mais</a>
-                </div>
-                <div class="servico-card reveal reveal-delay-2" data-num="03">
-                    <div class="servico-icon"><i class="fas fa-calculator"></i></div>
-                    <h3>Contabilidade e Consultoria Tributária</h3>
-                    <p>Planeamento fiscal, apuramento de impostos e obtenção de comprovativos de regularidade para concursos publicos e financiamentos.</p>
-                    <a href="#contacto" class="servico-link">Saiba Mais</a>
-                </div>
-                <div class="servico-card reveal reveal-delay-3" data-num="04">
-                    <div class="servico-icon"><i class="fas fa-language"></i></div>
-                    <h3>Tradução Juramentada</h3>
-                    <p>Traduções oficiais com validade legal para contratos, certidões, relatórios e outros documentos sensíveis.</p>
-                    <a href="#contacto" class="servico-link">Saiba Mais</a>
-                </div>
+            <div class="mvp-item reveal reveal-delay-1">
+                <h4>VISÃO</h4>
+                <p>Ser o parceiro estratégico de preferência em agilidade e integridade administrativa no país até 2028.</p>
+            </div>
+            <div class="mvp-item reveal reveal-delay-2">
+                <h4>VALORES</h4>
+                <p>Ética Inabalável, Agilidade Pragmática, Transparência Total e Rigor Técnico em cada processo.</p>
             </div>
         </div>
-    </section>
+
+       <!-- PARCEIRA ESTRATÉGICA -->
+<div class="sobre-parceira">
+    <div class="sobre-parceira-inner">
+        <div class="reveal">
+            <h3>Sua <em>Parceira Estratégica</em><br>no Terreno</h3>
+        </div>
+        <p class="sobre-parceira-texto reveal reveal-delay-2">
+            Com profundo conhecimento da realidade moçambicana, a Moz Papeladas conecta exigências legais complexas a soluções práticas. Do design da marca à submissão do imposto. Cuidamos de tudo com o mais alto sigilo, organização e transparência.
+        </p>
+    </div>
+</div>
+</section>
+
+        <!-- PORQUE ESCOLHER A MOZ PAPELADAS -->
+<section class="diferenciais-nova">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Por que escolher a <em>Moz Papeladas?</em></h2>
+        </div>
+        
+        <div class="diferenciais-grid-nova">
+            <div class="diferencial-item-nova reveal">
+                <div class="dif-icon-nova"><i class="fas fa-map-marked-alt"></i></div>
+                <h3>Expertise</h3>
+                <p>Profundo conhecimento da legislação e dos procedimentos administrativos moçambicanos.</p>
+            </div>
+            
+            <div class="diferencial-item-nova reveal reveal-delay-1">
+                <div class="dif-icon-nova"><i class="fas fa-clock"></i></div>
+                <h3>Agilidade</h3>
+                <p>Redução significativa nos tempos de espera através de processos otimizados.</p>
+            </div>
+            
+            <div class="diferencial-item-nova reveal reveal-delay-2">
+                <div class="dif-icon-nova"><i class="fas fa-shield-alt"></i></div>
+                <h3>Segurança Jurídica</h3>
+                <p>Garantia de que todos os processos seguem rigorosamente as normas vigentes, evitando multas e sanções.</p>
+            </div>
+            
+            <div class="diferencial-item-nova reveal reveal-delay-3">
+                <div class="dif-icon-nova"><i class="fas fa-eye"></i></div>
+                <h3>Transparência</h3>
+                <p>Acompanhamento em tempo real de cada etapa do processo solicitado.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- SERVIÇOS -->
+<section class="servicos" id="servicos">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Nossos <em>Principais Serviços</em></h2>
+            <p>Soluções completas para cada etapa da sua jornada legal e administrativa</p>
+        </div>
+        
+        <div class="servicos-grid">
+            <!-- Card 1 - Gestão Documental e Imigração -->
+<div class="servico-card reveal" data-num="01">
+    <div class="servico-icon"><i class="fas fa-passport"></i></div>
+    <h3>Gestão Documental e Imigração</h3>
+    <div class="servico-lista">
+        <p><strong>Vistos e DIRE:</strong> Assessoria completa em processos de vistos (Trabalho, Investimento, Residência) e obtenção de documentos de identidade para estrangeiros.</p>
+        <p><strong>Legalizações:</strong> Autenticação e reconhecimento de documentos junto a Notários e MINEC.</p>
+        <p><strong>Tradução Juramentada:</strong> Traduções oficiais com fé pública para documentos jurídicos e financeiros.</p>
+    </div>
+   <a href="https://wa.me/258878636773?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Gestão%20Documental%20e%20Imigração" 
+   class="btn-servico" 
+   target="_blank"
+   rel="noopener noreferrer">
+    <span>SAIBA MAIS →</span>
+</a>
+</div>
+
+<!-- Card 2 - Constituição e Legalização de Empresas -->
+<div class="servico-card reveal reveal-delay-1" data-num="02">
+    <div class="servico-icon"><i class="fas fa-building"></i></div>
+    <h3>Constituição e Legalização de Empresas e Associação</h3>
+    <div class="servico-lista">
+        <p>Processo completo de abertura de empresas (Reserva de Nome, Estatutos, Conservatória, Boletim da República e abertura de conta bancária).</p>
+        <p>Obtenção de Licenciamentos e Alvarás de actividade.</p>
+    </div>
+    <a href="https://wa.me/258878636773?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Constituição%20e%20Legalização%20de%20Empresas" 
+   class="btn-servico" 
+   target="_blank"
+   rel="noopener noreferrer">
+    <span>SAIBA MAIS →</span>
+</a>
+</div>
+
+<!-- Card 3 - Contabilidade e Consultoria Tributária -->
+<div class="servico-card reveal reveal-delay-2" data-num="03">
+    <div class="servico-icon"><i class="fas fa-calculator"></i></div>
+    <h3>Contabilidade e Consultoria Tributária</h3>
+    <div class="servico-lista">
+        <p><strong>Fiscalidade:</strong> Apuramento de impostos (IVA, IRPC) e planeamento fiscal estratégico para otimização de custos.</p>
+        <p><strong>Contabilidade Geral:</strong> Gestão de folha de pagamento (INSS/IRPS) e encerramento de contas.</p>
+        <p><strong>Compliance:</strong> Auditoria preventiva para garantir que sua empresa esteja 100% regularizada perante a Autoridade Tributária.</p>
+    </div>
+   <a href="https://wa.me/258878636773?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Contabilidade%20e%20Consultoria%20Tributária" 
+   class="btn-servico" 
+   target="_blank"
+   rel="noopener noreferrer">
+    <span>SAIBA MAIS →</span>
+</a>
+</div>
+
+<!-- Card 4 - Identidade Corporativa e Branding -->
+<div class="servico-card reveal reveal-delay-3" data-num="04">
+    <div class="servico-icon"><i class="fas fa-paint-brush"></i></div>
+    <h3>Identidade Corporativa e Branding</h3>
+    <div class="servico-lista">
+        <p><strong>Criação de Logótipos:</strong> Design exclusivo que reflete a essência e os valores da sua empresa.</p>
+        <p><strong>Papelaria Corporativa:</strong> Criação de modelos de papel timbrado (essencial para faturas e ofícios), cartões de visita e assinaturas de e-mail.</p>
+        <p><strong>Presença Digital:</strong> Criação de artes para redes sociais (LinkedIn, Instagram/Facebook e outras) para o lançamento da marca.</p>
+        <p><strong>Criação de websites.</strong></p>
+    </div>
+    <a href="https://wa.me/258878636773?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20serviço%20de%20Identidade%20Corporativa%20e%20Branding" 
+   class="btn-servico" 
+   target="_blank"
+   rel="noopener noreferrer">
+    <span>SAIBA MAIS →</span>
+</a>
+</div>
+</section>
 
     <!-- FOOTER -->
     <footer class="footer" id="contacto">
@@ -1027,14 +1391,14 @@ garantindo segurança jurídica e tranquilidade para cidadãos e organizações.
                 <div class="footer-col">
                     <h4>Contactos</h4>
                     <ul>
-                        <li><a href="tel:+258843923195">+258 84 392 3195</a></li>
-                        <li><a href="mailto:emidiomadeira@gmail.com">emidiomadeira@gmail.com</a></li>
+                        <li><a href="tel:+258878636773">+258 87 863 6773</a></li>
+                        <li><a href="mailto: mozpapeladas@outlook.com">mozpapeladas@outlook.com</a></li>
                         <li><a href="#">Pemba - Moçambique</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Consultor</h4>
-                    <a href="https://wa.me/258843923195?text=Ola%2C%20gostaria%20de%20falar%20com%20um%20consultor"
+                    <a href="https://wa.me/258878636773?text=Ola%2C%20gostaria%20de%20falar%20com%20um%20consultor"
                        class="footer-link-destaque"
                        target="_blank"
                        rel="noopener noreferrer">
